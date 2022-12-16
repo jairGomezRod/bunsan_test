@@ -1,10 +1,18 @@
 import './Login.css';
 import { Button, Form, Figure } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
+  const navigate = useNavigate();
+
+  const signin = event => {
+    event.preventDefault();
+    navigate("/dashboard");
+  }
+
   return (
     <div className="login">
-      <Form className='login__form'>
+      <Form className='login__form' onSubmit={signin}>
         <Figure>
           <Figure.Image 
             width={150}
