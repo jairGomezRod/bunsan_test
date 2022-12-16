@@ -4,7 +4,7 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from './reportWebVitals';
 import { RouterProvider } from 'react-router-dom';
-import router from './routes.js'
+import router from './routes.js';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
