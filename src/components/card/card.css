@@ -1,0 +1,30 @@
+.card {
+  height: 115px;
+}
+
+.cardLink{
+  color: var(--bs-body-color);
+  text-decoration: none;
+}
+
+.cardLink:hover .card {
+  background-color: var(--bs-body-color);
+  color: var(--bs-light);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.card__add{
+  cursor: pointer;
+  text-align: center;
+}
+
+.card__add:hover {
+  background-color: var(--bs-body-color);
+  color: var(--bs-light);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+
+.card__add--icon{
+  font-size: 50px;
+}
