@@ -17,7 +17,7 @@ function CardDepartments(props) {
   } else {
     const { name, expense } = props.data
     return (
-      <Link to="/" className='cardLink'>
+      <Link to="/detail" className='cardLink'>
         <Card className='card'>
           <Card.Body>
             <Card.Title>

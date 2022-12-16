@@ -1,0 +1,40 @@
+hr{
+  margin: 0.3rem 0;
+}
+.node {
+  
+  display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.borderNode{
+  border-left:1px solid gray;
+}
+
+.container {
+  overflow-x: scroll;
+}
+
+.row {
+  flex-wrap: nowrap;
+}
+
+.node__item{
+  width: 100%;
+  padding: 20px 0;
+  align-items: center;
+}
+
+.icon {
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+.icon__edit:hover {
+  color: #c0c428;
+}
+
+.icon__trash:hover {
+  color: #eb6e8b;
+}
