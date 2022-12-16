@@ -16,7 +16,7 @@ hr{
   overflow-x: scroll;
 }
 
-.row {
+.departmentDetail .row {
   flex-wrap: nowrap;
 }
 

@@ -3,7 +3,7 @@ import { Container, Row, Col, Stack, Button} from "react-bootstrap";
 
 function Detail() {
   return (
-    <Container>
+    <Container className="departmentDetail">
       <Stack direction="horizontal" gap={3}>
         <div className="vr" />
         <div>
