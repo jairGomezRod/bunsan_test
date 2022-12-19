@@ -1,6 +1,6 @@
 import { Modal, Button, Form } from "react-bootstrap";
 
-function AddItemsModal(props) {
+function AddEmplyeeModal(props) {
   return (
     <Modal {...props} >
       <Modal.Header closeButton>
@@ -26,4 +26,4 @@ function AddItemsModal(props) {
   );
 }
 
-export default AddItemsModal;
+export default AddEmplyeeModal;
