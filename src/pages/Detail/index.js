@@ -7,10 +7,16 @@ import { useSelector } from 'react-redux';
 
 function Detail() {
   const [modalShow, setModalShow] = useState(false);
+  const [modalData, setModalData] = useState({});
   const { id } = useParams();
   const departments = useSelector((state) => state.department);
-  const department = departments.filter((depto)=>{return depto.id == id})[0]
-  console.log(department);
+  const department = departments.filter((depto)=>{return depto.id == id})[0];
+
+  const createModal = event => {
+    setModalData(event);
+    setModalShow(true);
+  }
+  
   return (
     <Container className="departmentDetail">
       <Stack direction="horizontal" gap={3}>
@@ -25,9 +31,10 @@ function Detail() {
         </div>
       </Stack>
 
-      <HierarchyTree id={id} onShowModal={() => setModalShow(true)}/> 
+      <HierarchyTree id={id} onShowModal={(event) => createModal(event)}/> 
 
       <AddEmplyeeModal 
+        data={modalData}
         show={modalShow} 
         onHide={() => setModalShow(false)}
       />

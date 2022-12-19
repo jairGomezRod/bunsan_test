@@ -5,31 +5,31 @@ import { useSelector } from 'react-redux';
 
 function HierarchyTree(props) {
   const id = props.id;
-  const departments = useSelector((state) => state.department);
-  const department = departments.filter((depto)=>{return depto.id == id})[0]
-  const departmentEmployees = department.employees;
-  const employees = useSelector((state) => state.employees)[0];
 
+  const departments = useSelector((state) => state.department);
+  const secondLevel = useSelector((state) => state.secondLevel);
+  const employeesTypes = useSelector((state) => state.employees)[0];
+  const department = departments.filter((depto)=>{return depto.id == id})
+  const secondLevelEmployees = secondLevel.filter((level)=>{return level.dad == id})
+  
   const getEmployeeData = (type) => {
-    return employees[type];
+    return employeesTypes[type];
   }
 
-  const firstLevelRender = departmentEmployees.map( item => {
+  const firstLevelRender = department.map( item => {
     return (
-      <div key={item.type} className="node__item">
+      <div key={item.id} className="node__item">
         {getEmployeeData(item.type).name}
-        <i className="icon icon__edit fa-regular fa-pen-to-square"></i>
         <hr />
         <b>${getEmployeeData(item.type).allocation}</b>
       </div>
     )} 
   )
 
-  let child = departmentEmployees[0].childrens;
 
-  const secondLevelRender = child.map( item => {
+  const secondLevelRender = secondLevelEmployees.map( item => {
     return (
-      <SecondLevelHierarchy data={item} {...props}/>
+      <SecondLevelHierarchy key={item.id} data={item} {...props}/>
     )} 
   )
 
@@ -42,7 +42,7 @@ function HierarchyTree(props) {
       <Col md={6} className="node ">
         <Stack>
           {secondLevelRender}
-          <SecondLevelHierarchy {...props} isEmpty/>
+          <SecondLevelHierarchy {...props} dad={id} isEmpty/>
         </Stack>
       </Col>
     </Row>

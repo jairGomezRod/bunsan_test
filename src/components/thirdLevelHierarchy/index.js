@@ -3,31 +3,32 @@ import AddEmplyeeButton from "../addEmployeeButton";
 import { useSelector } from 'react-redux';
 
 function ThirdLevelHierarchy(props) {
-  const employees = useSelector((state) => state.employees)[0];
+  
+  const thirdLevel = useSelector((state) => state.thirdLevel);
+  const employeesTypes = useSelector((state) => state.employees)[0];
+
+  const thirdLevelEmployees = thirdLevel.filter((employee)=>{return employee.dad == props.data.id})
 
   const getEmployeeData = (type) => {
-    return employees[type];
+    return employeesTypes[type];
   } 
-
-  let thirdLevelRender;
-  if(props.data.childrens){
-    thirdLevelRender = props.data.childrens.map( item => {
-      return (
-        <div key={item} className="node__item">
-          {getEmployeeData(item).name}
-          <i className="icon icon__edit fa-regular fa-pen-to-square"></i>
-          <i className="icon icon__trash fa-solid fa-trash"></i>
-          <hr />
-          <b>${getEmployeeData(item).allocation}</b>
-        </div>
-      )} 
-    )
-  }
+  
+  const thirdLevelRender = thirdLevelEmployees.map( item => {
+    return (
+      <div key={item.type} className="node__item">
+        {getEmployeeData(item.type).name}
+        <i className="icon icon__edit fa-regular fa-pen-to-square"></i>
+        <i className="icon icon__trash fa-solid fa-trash"></i>
+        <hr />
+        <b>${getEmployeeData(item.type).allocation}</b>
+      </div>
+    )} 
+  )
 
   return (
     <Col md={6} className="borderNode">
       {thirdLevelRender}
-      <AddEmplyeeButton {...props} id="thirdLevel"/>
+      <AddEmplyeeButton {...props} grandfather={props.data.dad} dad={props.data.id} id="thirdLevel"/>
     </Col>
   );
 }

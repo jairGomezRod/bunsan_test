@@ -7,6 +7,8 @@ function AddEmplyeeButton(props) {
         variant="outline-dark" 
         onClick={props.onShowModal}
         id={props.id}
+        data-dad={props.dad}
+        data-grandfather={props.grandfather}
       >
         Add employee
       </Button>

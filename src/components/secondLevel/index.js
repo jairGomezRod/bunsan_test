@@ -4,10 +4,11 @@ import AddEmplyeeButton from "../addEmployeeButton";
 import { useSelector } from 'react-redux';
 
 function SecondLevelHierarchy(props) {
-  const employees = useSelector((state) => state.employees)[0];
+
+  const employeesTypes = useSelector((state) => state.employees)[0];
 
   const getEmployeeData = (type) => {
-    return employees[type];
+    return employeesTypes[type];
   }
 
   if(props.isEmpty){
@@ -31,7 +32,6 @@ function SecondLevelHierarchy(props) {
           <b>${getEmployeeData(props.data.type).allocation}</b>
         </div>
         
-        <AddEmplyeeButton {...props} id="secondLevel"/>
       </Col>
 
       {props.data.type == 1 &&
