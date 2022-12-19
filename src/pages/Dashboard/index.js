@@ -1,28 +1,22 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import CardDepartments from '../../components/cardDepartments';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { newDepartment } from '../../redux/states/departments.state';
 
 function Dashboard() {
+  const dispatch = useDispatch();
   const { name,rol } = useSelector((state) => state.user)[0];
+  const departments = useSelector((state) => state.department);
 
-  const departments = [
-    {
-      id: 1,
-      name: "Departamento 1",
-      expense: 1000,
-    },
-    {
-      id: 2,
-      name: "Departamento 2",
-      expense: 5000,
-    },
-  ];
+  const createDepartment = () => {
+    dispatch(newDepartment());
+  }
 
   const departmentsItems = departments.map( item => 
     <Col key={item.id} md={3} className="mb-4">
       <CardDepartments data={item}/>
     </Col>
-    )
+  )
   
   return (
     <Container>
@@ -40,7 +34,7 @@ function Dashboard() {
         { departmentsItems }
 
         <Col md={3}> 
-          <CardDepartments/>
+          <CardDepartments onClick={() => createDepartment()}/>
         </Col>
       </Row>
     </Container>
