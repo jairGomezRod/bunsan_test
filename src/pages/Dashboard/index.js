@@ -1,7 +1,9 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import CardDepartments from '../../components/cardDepartments';
+import { useSelector } from 'react-redux';
 
 function Dashboard() {
+  const { name,rol } = useSelector((state) => state.user)[0];
 
   const departments = [
     {
@@ -21,14 +23,15 @@ function Dashboard() {
       <CardDepartments data={item}/>
     </Col>
     )
+  
   return (
     <Container>
       <Row>
         <Col md={4}>
-          <h2>Hola Jhon Doe</h2>
+          <h2>Hi, {name}</h2>
         </Col>
         <Col md={{ span: 4, offset: 4 }} className="text-end">
-          <h2>Contador</h2>
+          <h2>{rol}</h2>
         </Col>
       </Row>
 
