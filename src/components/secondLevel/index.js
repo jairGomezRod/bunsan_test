@@ -26,7 +26,7 @@ function SecondLevelHierarchy(props) {
     <Row className="node__item">
       <Col md={6} className=" borderNode">
         <div className="node__item">
-          {getEmployeeData(props.data.type).name} <i className="icon icon__edit fa-regular fa-pen-to-square"></i>
+          {getEmployeeData(props.data.type).name}
           <i className="icon icon__trash fa-solid fa-trash"></i>
           <hr />
           <b>${getEmployeeData(props.data.type).allocation}</b>

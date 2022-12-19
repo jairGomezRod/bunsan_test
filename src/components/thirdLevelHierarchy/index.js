@@ -17,7 +17,6 @@ function ThirdLevelHierarchy(props) {
     return (
       <div key={item.type} className="node__item">
         {getEmployeeData(item.type).name}
-        <i className="icon icon__edit fa-regular fa-pen-to-square"></i>
         <i className="icon icon__trash fa-solid fa-trash"></i>
         <hr />
         <b>${getEmployeeData(item.type).allocation}</b>
