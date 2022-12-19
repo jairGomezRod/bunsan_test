@@ -8,7 +8,12 @@ import usePasswordValidation from '../../hooks/usePasswordValidation';
 
 function Login() {
   const navigate = useNavigate();
-  const { email, password } = useSelector((state) => state.user)[0];
+  const user = useSelector((state) => state.user);
+  let email, password;
+  if(user){
+    email = user[0].email;
+    password = user[0].password;
+  }
   
   const [showError, setShowError] = useState(false);
   const [inputEmail, setEmail] = useState('');
@@ -80,7 +85,7 @@ function Login() {
           />
         </Form.Group>
         {showError && (
-          <p className='login__form--error'>Incorrect login, check that the email and password are correct</p>
+          <p data-testid="error-message" className='login__form--error'>Incorrect login, check that the email and password are correct</p>
         )}
         <Button variant="primary" type="submit" disabled={!isFormValid}>
           Sign in
