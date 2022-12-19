@@ -39,3 +39,8 @@
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+.login__form--error {
+  color:brown;
+  font-size: 18px;
+}

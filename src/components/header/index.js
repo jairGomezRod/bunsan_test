@@ -1,13 +1,13 @@
 import { Figure, Button } from 'react-bootstrap';
-import './header.css';
 import { useNavigate } from 'react-router-dom';
+import './header.css';
 
 function Header() {
   const navigate = useNavigate();
 
   const signOut = event => {
     event.preventDefault();
-    
+    localStorage.removeItem("authenticated");
     navigate("/");
   }
 

@@ -1,13 +1,47 @@
 import './Login.css';
+import { useState } from 'react';
 import { Button, Form, Figure } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import useEmailValidation from '../../hooks/useEmailValidation';
+import usePasswordValidation from '../../hooks/usePasswordValidation';
 
 function Login() {
   const navigate = useNavigate();
+  const { email, password } = useSelector((state) => state.user)[0];
+  
+  const [showError, setShowError] = useState(false);
+  const [inputEmail, setEmail] = useState('');
+  const [inputPassword, setPassword] = useState('');
+
+  const isEmailValid = useEmailValidation(inputEmail);
+  const isPasswordValid = usePasswordValidation(inputPassword);
+  const isFormValid = isEmailValid && isPasswordValid;
+
+  const handleEmail = event => {
+    setEmail(event.target.value);
+  }
+
+  const handlePassword = event => {
+    setPassword(event.target.value);
+  }
 
   const signin = event => {
     event.preventDefault();
+    const isUserEmail = inputEmail == email;
+    const isUserPassword = inputPassword == password;
+    
+    if(!isUserEmail || !isUserPassword) {
+      return setShowError(true);
+    }  
+
+    setLocalStorageItem();
+
     navigate("/dashboard");
+  }
+
+  const setLocalStorageItem = () => {
+    localStorage.setItem("authenticated", true);
   }
 
   return (
@@ -26,12 +60,29 @@ function Login() {
         </Figure>
         
         <Form.Group controlId='emailField'>
-          <Form.Control className='login__form--control' type="email" placeholder="Email Address" required/>
+          <Form.Control 
+            className='login__form--control' 
+            type="email" 
+            placeholder="Email Address" 
+            required
+            onChange={handleEmail}
+            value={inputEmail}
+          />
         </Form.Group>
         <Form.Group controlId='emailField'>
-          <Form.Control className='login__form--control' type="password" placeholder="Password" required/>
+          <Form.Control 
+            className='login__form--control' 
+            type="password" 
+            placeholder="Password" 
+            required
+            onChange={handlePassword}
+            value={inputPassword}
+          />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        {showError && (
+          <p className='login__form--error'>Incorrect login, check that the email and password are correct</p>
+        )}
+        <Button variant="primary" type="submit" disabled={!isFormValid}>
           Sign in
         </Button>
       </Form>
