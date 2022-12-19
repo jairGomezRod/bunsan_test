@@ -1,5 +1,5 @@
 import { Container, Row, Col } from 'react-bootstrap';
-import CardDepartments from '../../components/card';
+import CardDepartments from '../../components/cardDepartments';
 
 function Dashboard() {
 
@@ -17,7 +17,7 @@ function Dashboard() {
   ];
 
   const departmentsItems = departments.map( item => 
-    <Col md={3} className="mb-4">
+    <Col key={item.id} md={3} className="mb-4">
       <CardDepartments data={item}/>
     </Col>
     )
