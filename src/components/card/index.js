@@ -8,7 +8,7 @@ function CardDepartments(props) {
       <Card className='card__add'>
         <Card.Body>
           <Card.Text>
-            <i class="card__add--icon fa-regular fa-plus"></i>
+            <i className="card__add--icon fa-regular fa-plus"></i>
             <h4>Agregar más</h4>
           </Card.Text>
         </Card.Body>
