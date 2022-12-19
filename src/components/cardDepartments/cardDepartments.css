@@ -26,3 +26,7 @@
 .card__add--icon{
   font-size: 50px;
 }
+
+.card__add b{
+  font-size: 18px;
+}
