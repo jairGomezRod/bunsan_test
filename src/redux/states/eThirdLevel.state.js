@@ -18,11 +18,8 @@ export const thirdLevelSlice = createSlice({
     newThirdEmployee: (state, action) => {
       state.push(defaultThirdLevel(state, action.payload));
     },
-    deleteThirdEmployee: (state) => {
-      state.value -= 1
-    },
-    updateThirdEmployee: (state, action) => {
-      state.value += action.payload
+    deleteThirdEmployee: (state, action) => {
+      return state.filter((item) => item.id != action.payload)
     },
 
   },

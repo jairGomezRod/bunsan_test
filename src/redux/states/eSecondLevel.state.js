@@ -18,13 +18,9 @@ export const secondLevelSlice = createSlice({
     newSecondEmployee: (state,action) => {
       state.push(defaultSecondLevel(state,action.payload));
     },
-    deleteSecondEmployee: (state) => {
-      state.value -= 1
+    deleteSecondEmployee: (state, action) => {
+      return state.filter((item) => item.id != action.payload)
     },
-    updateSecondEmployee: (state, action) => {
-      state.value += action.payload
-    },
-
   },
 })
 
