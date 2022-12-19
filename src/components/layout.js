@@ -1,17 +1,22 @@
+import { Navigate } from 'react-router-dom';
 import Header from "./header";
+
 function Layout(props) {
-    return (
-      <>
-        <Header />
-        <main role="main">
-          <div className="album py-5">
-            <div className="container">
-              { props.children }
-            </div>
+  const isLogged = localStorage.getItem("authenticated");
+  if (!isLogged) return <Navigate to="/" replace />;
+  
+  return (
+    <>
+      <Header />
+      <main role="main">
+        <div className="album py-5">
+          <div className="container">
+            { props.children }
           </div>
-        </main>
-      </>
-    )
+        </div>
+      </main>
+    </>
+  )
 }
 
 export default Layout;
