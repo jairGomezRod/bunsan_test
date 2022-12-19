@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
-import AddItemsModal from './index';
+import AddEmplyeeModal from './index';
 
 test('renders modal', () => {
   render(
-    <AddItemsModal 
+    <AddEmplyeeModal 
       show={true} 
     />
   );
@@ -13,7 +13,7 @@ test('renders modal', () => {
 
 test('render close modal button', () => {
   render(
-    <AddItemsModal
+    <AddEmplyeeModal
       show={true}  
     />
   );
@@ -23,7 +23,7 @@ test('render close modal button', () => {
 
 test('render select employee', () => {
   render(
-    <AddItemsModal
+    <AddEmplyeeModal
       show={true}  
     />
   );
