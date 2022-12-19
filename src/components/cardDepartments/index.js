@@ -1,6 +1,6 @@
 import { Card } from 'react-bootstrap';
 import { Link } from "react-router-dom";
-import "./card.css"
+import "./cardDepartments.css"
 
 function CardDepartments(props) {
   if(!props.data){
@@ -24,7 +24,7 @@ function CardDepartments(props) {
               { name }
             </Card.Title>
             <Card.Subtitle className="mb-2 text-muted">
-              Presupuesto disponible:
+              Expense allocation
             </Card.Subtitle>
             <Card.Text>
               <b>${ expense }</b>
