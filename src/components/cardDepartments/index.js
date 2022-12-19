@@ -5,7 +5,7 @@ import "./cardDepartments.css"
 function CardDepartments(props) {
   if(!props.data){
     return (
-      <Card className='card__add'>
+      <Card className='card__add' onClick={props.onClick}>
         <Card.Body>
           <Card.Text>
             <i className="card__add--icon fa-regular fa-plus"></i>
@@ -16,7 +16,7 @@ function CardDepartments(props) {
       </Card>
     )
   } else {
-    const { name, expense, id } = props.data
+    const { name, allocation, id } = props.data
     const route = `/detail/${id}`
     return (
       <Link to={route} className='cardLink'>
@@ -29,7 +29,7 @@ function CardDepartments(props) {
               Expense allocation
             </Card.Subtitle>
             <Card.Text>
-              <b>${ expense }</b>
+              <b>${ allocation }</b>
             </Card.Text>
           </Card.Body>
         </Card>

@@ -38,3 +38,11 @@ hr{
 .icon__trash:hover {
   color: #eb6e8b;
 }
+
+.main-row .row{
+  flex-wrap: nowrap;
+}
+.main-row{
+  overflow-x: scroll;
+  flex-wrap: nowrap;
+}
