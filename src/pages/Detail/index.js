@@ -2,7 +2,7 @@ import { Container, Stack} from "react-bootstrap";
 import HierarchyTree from "../../components/hierarchyTree";
 import AddEmplyeeModal from "../../components/addEmployeeModal";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
 function Detail() {
@@ -20,8 +20,11 @@ function Detail() {
   return (
     <Container className="departmentDetail">
       <Stack direction="horizontal" gap={3}>
+        
+        <Link className="icon fa-solid fa-backward" to="/dashboard"></Link>
+        
         <div className="vr" />
-        <div>
+        <div>  
           <h5>{department.name}</h5>
         </div>
         <div className="ms-auto">
