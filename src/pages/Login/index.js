@@ -9,19 +9,16 @@ import usePasswordValidation from '../../hooks/usePasswordValidation';
 function Login() {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
-  let email, password;
-  if(user){
-    email = user[0].email;
-    password = user[0].password;
-  }
-  
   const [showError, setShowError] = useState(false);
   const [inputEmail, setEmail] = useState('');
   const [inputPassword, setPassword] = useState('');
-
   const isEmailValid = useEmailValidation(inputEmail);
   const isPasswordValid = usePasswordValidation(inputPassword);
   const isFormValid = isEmailValid && isPasswordValid;
+
+  if(!user) return false; 
+
+  const {email, password} = user[0];
 
   const handleEmail = event => {
     setEmail(event.target.value);
@@ -33,8 +30,8 @@ function Login() {
 
   const signin = event => {
     event.preventDefault();
-    const isUserEmail = inputEmail == email;
-    const isUserPassword = inputPassword == password;
+    const isUserEmail = inputEmail === email;
+    const isUserPassword = inputPassword === password;
     
     if(!isUserEmail || !isUserPassword) {
       return setShowError(true);
